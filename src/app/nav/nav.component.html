@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" [routerLink]="['/home']">Course App</a>
+    <ul class="navbar-nav mr-auto" *ngIf="loggedIn()" >
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/courses']" routerLinkActive="router-link-active" >Courses
+          <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/favouriteCourses']">Favourites</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/messages']" >Add course</a>
+      </li>
+    </ul>
+    <div class="dropdown" *ngIf="loggedIn()" dropdown>
+      <a class="dropdown-toggle text-light" dropdownToggle>
+        Welcome
+      </a>
+      <div class="dropdown-menu mt-2" *dropdownMenu>
+        <a class="dropdown-item" [routerLink]="['/member/edit']" ><i class="fa fa-user"></i> Edit Profile</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" *ngIf="loggedIn()"  (click)="logout()">
+          <i class="fa fa-sign-out"></i> Log out
+        </a>
+      </div>
+    </div>
+
+    <form *ngIf="!loggedIn()" [formGroup]="form" class="form-inline my-2 my-lg-0" (ngSubmit)="onLogin()">
+      <input class="form-control mr-sm-2" 
+             type="email" 
+             id="email" 
+             formControlName="email" 
+             placeholder="Enter email ..." >
+      <input class="form-control mr-sm-2"     
+             type="password" 
+             id="password" 
+             placeholder="Enter password ..." 
+             formControlName="password">
+      <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+    </form>
+  </div>
+</nav>

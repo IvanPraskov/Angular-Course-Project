@@ -1,0 +1,79 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "title": "Business Course",
+      "description": "Course about business",
+      "addedAt": "15.03.2014",
+      "rating": 2
+    },
+    {
+      "id": 2,
+      "title": "Programming Course",
+      "description": "Course about Programming",
+      "addedAt": "15.03.2014",
+      "rating": 5
+    },
+    {
+      "id": 3,
+      "title": "Art Course",
+      "description": "Course about Art",
+      "addedAt": "15.03.2014",
+      "rating": 4
+    },
+    {
+      "id": 4,
+      "title": "Design Course",
+      "description": "Course about Design",
+      "addedAt": "15.03.2014",
+      "rating": 3
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "test@test.com",
+      "firstName": "Pesho",
+      "lastName": "Peshev"
+    },
+    {
+      "id": 2,
+      "email": "test14@test.com",
+      "firstName": "Sasho",
+      "lastName": "Roman"
+    },
+    {
+      "id": 3,
+      "email": "test13@test.com",
+      "firstName": "Georgi",
+      "lastName": "Georgiev"
+    },
+    {
+      "id": 4,
+      "email": "test12@test.com",
+      "firstName": "Joro",
+      "lastName": "Jorev"
+    },
+    {
+      "firstName": "Ivan",
+      "lastName": "Praskov",
+      "email": "rosen@ivanov.com",
+      "password": "12345678",
+      "id": 5
+    },
+    {
+      "firstName": "sahhsda",
+      "lastName": "sahsah",
+      "email": "sad@asax.com",
+      "password": "123456",
+      "id": 6
+    },
+    {
+      "firstName": "ivan",
+      "lastName": "praskov",
+      "email": "sasasa@asaxax.com",
+      "password": "12345678",
+      "id": 7
+    }
+  ]
+}
