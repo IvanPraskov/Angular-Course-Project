@@ -48,6 +48,7 @@ export class NavComponent implements OnInit, OnDestroy {
   }
   logout() {
     this.authService.logout();
+    this.router.navigate(['/home']);
     this.alertify.message('Logged out.');
   }
 

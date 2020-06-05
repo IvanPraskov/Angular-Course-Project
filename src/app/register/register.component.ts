@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { AlertifyService } from '../_services/alertify.service';
 import { Router } from '@angular/router';
@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { User } from '../_models/user';
+import { RxwebValidators, RxFormBuilder} from '@rxweb/reactive-form-validators';
 
 
 @Component({
@@ -13,22 +14,35 @@ import { User } from '../_models/user';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
   form: FormGroup;
   @Output() cancelRegister = new EventEmitter();
+  @Output() successfullRegister = new EventEmitter();
   destroy$ = new Subject<boolean>();
   constructor(private authService: AuthService,
               private alertify: AlertifyService,
               private router: Router,
-              private fb: FormBuilder
+              private fb: RxFormBuilder
   ) { }
+  
 
   ngOnInit() {
-    this.buildForm();
+    this.form = this.fb.group({
+      firstName: ['', RxwebValidators.required()],
+      lastName: ['', RxwebValidators.required()],
+      email: ['', [RxwebValidators.required(), RxwebValidators.email()]],
+      password : ['', [RxwebValidators.required(),
+         RxwebValidators.password({ validation: { minLength: 5, digit: true, specialCharacter: true } })]],
+    });
+  }
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
   }
 
   onRegister() {
     const formData = this.form.value;
+    if (this.form.valid) {
     this.authService.getUsers().pipe(
       map((user: User[]) => user.find(u => u.email === formData.email)),
       takeUntil(this.destroy$))
@@ -41,17 +55,18 @@ export class RegisterComponent implements OnInit {
         takeUntil(this.destroy$))
         .subscribe(next => {
           this.alertify.success('Successfully registered.');
-          this.router.navigate(['home']);
+          this.successfullRegister.emit(false);
         });
       });
+    }
   }
   cancel() {
     this.cancelRegister.emit(false);
   }
 
-  private buildForm(): void {
+  private buildForm() {
     this.form = this.fb.group({
-      firstName: ['', Validators.required],
+      firstName: ['', RxwebValidators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]],

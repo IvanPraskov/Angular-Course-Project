@@ -3,21 +3,27 @@
   <hr>
 
   <div class="form-group">
-    <input type="text" class="form-control"  id="firstName" formControlName="firstName" placeholder="Enter First Name ... ">
+    <input type="text" class="form-control" id="firstName" formControlName="firstName" placeholder="Enter First Name ... ">
+    <small class="form-text text-danger" *ngIf="form.controls.firstName.errors && form.controls.firstName.dirty"><br/> This field is required</small>
   </div>
 
   <div class="form-group">
-    <input type="text" class="form-control"  id="lastName" formControlName="lastName" placeholder="Enter Last Name ... ">
+    <input type="text" class="form-control"   formControlName="lastName" placeholder="Enter Last Name ... ">
+    <small class="form-text text-danger" *ngIf="form.controls.lastName.errors && form.controls.lastName.dirty"><br/> This field is required </small>
   </div>
   <div class="form-group">
-    <input type="email" class="form-control"  id="email" formControlName="email" placeholder="Enter Email ... ">
+    <input type="email" class="form-control"   formControlName="email" placeholder="Enter Email ... ">
+    <small class="form-text text-danger" *ngIf="form.controls.email.errors && form.controls.email.dirty"><br/> This field is required and you must provide a valid email address</small>
   </div>
   <div class="form-group">
-    <input type="password" class="form-control"  id="password" formControlName="password" placeholder="Enter Password ... ">
+    <input type="password" class="form-control"   formControlName="password" placeholder="Enter Password ... ">
+    <small class="form-text text-danger"
+     *ngIf="form.controls.password.errors && form.controls.password.dirty"> <br/> 
+     This field is required and password must be longer than 5 symbols
+    </small>
   </div>
-
   <div class="form-group text-center">
-    <button class="btn btn-success" type="submit">Register</button>
+    <button class="btn btn-success" [disabled]="!form.valid" type="submit">Register</button>
     <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
   </div> 
 </form>

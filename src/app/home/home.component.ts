@@ -15,6 +15,9 @@ export class HomeComponent implements OnInit {
   onRegister() {
     this.registerMode = true;
   }
+  onSuccessfullRegister(event: boolean) {
+    this.registerMode = event;
+  }
 
   cancelRegisterMode(event: boolean) {
     this.registerMode = event;

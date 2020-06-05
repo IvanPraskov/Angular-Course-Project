@@ -6,6 +6,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { RouterModule } from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {  RxReactiveFormsModule } from "@rxweb/reactive-form-validators"
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,9 @@ import { CourseEditComponent } from './courses/course-edit/course-edit.component
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { appRoutes } from './routes';
+import { CourseCardComponent } from './courses/course-card/course-card.component';
+import { CourseDetailedComponent } from './courses/course-detailed/course-detailed.component';
+import { FavCoursesListComponent } from './courses/fav-courses-list/fav-courses-list.component';
 
 @NgModule({
    declarations: [
@@ -27,7 +31,10 @@ import { appRoutes } from './routes';
       RegisterComponent,
       CourseEditComponent,
       UserEditComponent,
-      UserListComponent
+      UserListComponent,
+      CourseCardComponent,
+      CourseDetailedComponent,
+      FavCoursesListComponent
    ],
    imports: [
       BrowserModule,
@@ -37,7 +44,8 @@ import { appRoutes } from './routes';
       BsDropdownModule.forRoot(),
       HttpClientModule,
       RouterModule.forRoot(appRoutes),
-      ReactiveFormsModule
+      ReactiveFormsModule,
+      RxReactiveFormsModule,
    ],
    providers: [],
    bootstrap: [

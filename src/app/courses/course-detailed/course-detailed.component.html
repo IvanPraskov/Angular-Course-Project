@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <div class="row">
+    <h1>{{course.title}}</h1>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <img class="card-img-top img-thumbnail" src="{{course.imageUrl}}" alt="{{course.title}}">
+        <div class="card-body">
+          <div>
+            <strong>Description: </strong>
+            <p>{{course.description}}</p>
+          </div>
+          <div>
+            <strong>Rating: </strong>
+            <p>{{course.rating}}</p>
+          </div>
+          <div>
+            <strong>Created at:</strong>
+            <p>{{course.addedAt}}</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="btn-group d-flex">
+            <button class="btn btn-primary w-100">Add to favourites</button>
+            <button class="btn btn-success w-100">Rate</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

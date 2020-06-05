@@ -4,4 +4,5 @@ export interface Course {
     description: string;
     addedAt: number;
     rating: number;
+    imageUrl: string;
 }

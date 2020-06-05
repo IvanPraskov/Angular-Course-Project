@@ -1,0 +1,17 @@
+<div class="card mb-4 h-100">
+  <div class="card-img-wrapper">
+    <img class="card-img-top" src="{{course.imageUrl}}" alt="{{course.title}}">
+    <ul class="list-inline course-icons animate text-center">
+      <li class="list-inline-item"><button class="btn btn-primary" [routerLink]="['/course/', course.id]" ><i class="fa fa-info-circle"></i></button></li>
+      <li class="list-inline-item"><button class="btn btn-primary" (click)="addToFavourites(course.id)"><i class="fa fa-heart"></i></button></li>
+    </ul>
+  </div>
+  <div class="card-body p-1">
+    <h6 class="card-title text-center mb-1">
+      {{course.title}}
+    </h6>
+    <h6 class="card-title text-center mb-1">
+      Rating:  {{course.rating}}
+    </h6>
+  </div>
+</div>
