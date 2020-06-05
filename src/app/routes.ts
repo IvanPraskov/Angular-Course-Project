@@ -9,6 +9,7 @@ import { CourseDetailedResolver } from './_resolvers/course-detailed.resolver';
 import { CourseListResolver } from './_resolvers/course-list.resolver';
 import { AuthGuard } from './_guards/auth.guard';
 import { FavCoursesListComponent } from './courses/fav-courses-list/fav-courses-list.component';
+import { AddCourseComponent } from './courses/add-course/add-course.component';
 
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent},
@@ -18,11 +19,12 @@ export const appRoutes: Routes = [
         canActivate: [AuthGuard],
         children: [
             {path: 'home', component: HomeComponent},
+            {path: 'courses/add', component: AddCourseComponent},
             {path: 'courses', component: CourseListComponent,
                 resolve: {courses: CourseListResolver}},
             {path: 'course/:id', component: CourseDetailedComponent,
                 resolve: {course: CourseDetailedResolver}},
-            {path: 'course/edit', component: CourseEditComponent},
+            {path: 'courses/add', component: AddCourseComponent},
             {path: 'courses/favourites', component: FavCoursesListComponent},
             {path: 'users', component: UserListComponent},
             {path: 'user/:id', component: UserEditComponent},

@@ -23,14 +23,6 @@
       "addedAt": "15.03.2014",
       "rating": 4,
       "imageUrl": "https://sueomaraart.co.uk/wp-content/uploads/2019/02/Sue-OMara-Art-Classes-Uckfield.jpg"
-    },
-    {
-      "id": 4,
-      "title": "Design Course",
-      "description": "Course about Design",
-      "addedAt": "15.03.2014",
-      "rating": 3,
-      "imageUrl": "https://udemy-images.udemy.com/course/750x422/599170_aa50_3.jpg"
     }
   ],
   "users": [
@@ -155,6 +147,14 @@
       "email": "asdasda@asdad.com",
       "password": "1234356@",
       "id": 14
+    },
+    {
+      "id": 15,
+      "email": "admin@admin.com",
+      "firstName": "Pesho",
+      "lastName": "Peshev",
+      "password": "admin",
+      "role": "admin"
     }
   ]
 }

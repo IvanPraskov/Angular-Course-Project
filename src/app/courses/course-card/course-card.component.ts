@@ -25,6 +25,7 @@ constructor(private route: ActivatedRoute,
             private userService: UserService) { }
 
   ngOnInit() {
+    this.user = this.authService.getLoggedUser();
   }
   ngOnDestroy(): void {
     this.destroy$.next(true);
@@ -33,11 +34,13 @@ constructor(private route: ActivatedRoute,
 
   addToFavourites(courseId: number) {
     this.user = this.authService.getLoggedUser();
-    // const courseInFav = this.user.favourites.find(c => c.id === courseId);
-    // if (courseInFav) {
-    //       this.alertify.error('This course is already added to favourites.');
-    //       return;
-    //     }
+    if (this.user.favourites) {
+      const courseInFav = this.user.favourites.find(c => c.id === courseId);
+      if (courseInFav) {
+            this.alertify.error('This course is already added to favourites.');
+            return;
+          }
+    }
     const existingFavCourse = this.user.favourites.find(c => c.id === courseId);
     if (existingFavCourse) {
       this.alertify.error('Course already added in favourites.');
@@ -50,6 +53,14 @@ constructor(private route: ActivatedRoute,
     // using this to update the user saved in localStorage,
     // otherwise it will only show the favourite courses user had added before logging in.
     this.authService.setLoggedUser(this.user);
+  }
+  // to be implemented for admin user role.
+  deleteCourse(courseId: number) {
+    this.courseService.deleteCourse(courseId).subscribe(course => {
+      this.alertify.success('Successfully deleted' + course.title);
+    }, error => {
+      this.alertify.error('There was a problem deleting the course');
+    });
   }
 
 }

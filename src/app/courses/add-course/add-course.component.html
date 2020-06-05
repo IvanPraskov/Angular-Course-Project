@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <form [formGroup]="form" (ngSubmit)="onAddCourse()">
+        <h2 class="text-center text-primary">Add course</h2>
+        <hr>
+
+        <div class="form-group">
+          <input type="text"
+                class="form-control"
+                placeholder="Enter title..."
+                formControlName="title">
+          <small class="form-text text-danger" *ngIf="form.controls.title.errors && form.controls.title.dirty"><br/> This field is required </small>
+        </div>
+
+        <div class="form-group">
+          <input type="text"
+                class="form-control"
+                placeholder="Enter description..."
+                formControlName="description">
+          <small class="form-text text-danger" *ngIf="form.controls.description.errors && form.controls.description.dirty"><br/> This field is required </small>
+        </div>
+
+        <div class="form-group">
+          <input type="number"
+                class="form-control"
+                placeholder="Enter rating..."
+                formControlName="rating">
+          <small class="form-text text-danger" *ngIf="form.controls.rating.errors && form.controls.rating.dirty"><br/> This field is required </small>
+        </div>
+
+        <div class="form-group">
+          <input type="text"
+                class="form-control"
+                placeholder="Enter image url..."
+                formControlName="imageUrl">
+          <small class="form-text text-danger" *ngIf="form.controls.imageUrl.errors && form.controls.imageUrl.dirty"><br/> This field is required </small>
+        </div>
+        <div class="form-group text-center">
+          <button class="btn btn-success" [disabled]="!form.valid" type="submit">Add</button>
+        </div> 
+      </form>
+    </div>
+  </div>
+</div>

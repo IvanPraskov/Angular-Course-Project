@@ -6,7 +6,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { RouterModule } from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {  RxReactiveFormsModule } from "@rxweb/reactive-form-validators"
+import {  RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +21,7 @@ import { appRoutes } from './routes';
 import { CourseCardComponent } from './courses/course-card/course-card.component';
 import { CourseDetailedComponent } from './courses/course-detailed/course-detailed.component';
 import { FavCoursesListComponent } from './courses/fav-courses-list/fav-courses-list.component';
+import { AddCourseComponent } from './courses/add-course/add-course.component';
 
 @NgModule({
    declarations: [
@@ -34,7 +35,8 @@ import { FavCoursesListComponent } from './courses/fav-courses-list/fav-courses-
       UserListComponent,
       CourseCardComponent,
       CourseDetailedComponent,
-      FavCoursesListComponent
+      FavCoursesListComponent,
+      AddCourseComponent
    ],
    imports: [
       BrowserModule,
