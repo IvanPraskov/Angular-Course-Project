@@ -43,10 +43,9 @@ constructor(private route: ActivatedRoute,
             this.alertify.error('This course is already added to favourites.');
             return;
           }
-
-
     this.user.favourites.push(this.course);
-    this.userService.updateUser(this.user).subscribe(next => {
+    this.userService.updateUser(this.user)
+      .subscribe(next => {
       this.alertify.success('Added to favourites.');
     });
     // using this to update the user saved in localStorage,

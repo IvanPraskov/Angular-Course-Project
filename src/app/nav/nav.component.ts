@@ -25,6 +25,9 @@ export class NavComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.buildForm();
+    if (this.loggedIn) {
+      this.loggedUser = this.authService.getLoggedUser();
+    }
   }
 
   ngOnDestroy() {
@@ -44,9 +47,11 @@ export class NavComponent implements OnInit, OnDestroy {
           return;
         }
         this.authService.setLoggedUser(user);
-        this.loggedUser = this.authService.getLoggedUser();
+
+        console.log(this.loggedUser);
         this.form.reset();
         this.alertify.success('Successfully logged in!');
+        this.router.navigate(['/courses']);
       });
   }
   logout() {
