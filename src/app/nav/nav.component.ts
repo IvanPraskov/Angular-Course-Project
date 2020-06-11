@@ -47,8 +47,6 @@ export class NavComponent implements OnInit, OnDestroy {
           return;
         }
         this.authService.setLoggedUser(user);
-
-        console.log(this.loggedUser);
         this.form.reset();
         this.alertify.success('Successfully logged in!');
         this.router.navigate(['/courses']);
