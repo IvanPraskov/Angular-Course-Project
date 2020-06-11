@@ -23,6 +23,13 @@
       "addedAt": "15.03.2014",
       "rating": 4,
       "imageUrl": "https://sueomaraart.co.uk/wp-content/uploads/2019/02/Sue-OMara-Art-Classes-Uckfield.jpg"
+    },
+    {
+      "title": "Design Course",
+      "description": "dasdasdasdasd",
+      "rating": 3,
+      "imageUrl": "sdasdadasdasdad",
+      "id": 4
     }
   ],
   "users": [
@@ -155,6 +162,23 @@
       "lastName": "Peshev",
       "password": "admin",
       "role": "admin"
+    },
+    {
+      "firstName": "Ivan",
+      "lastName": "Praskov",
+      "email": "georgi@goshev.com",
+      "password": "12345678@abc",
+      "id": 16,
+      "favourites": [
+        {
+          "id": 3,
+          "title": "Art Course",
+          "description": "Course about Art",
+          "addedAt": "15.03.2014",
+          "rating": 4,
+          "imageUrl": "https://sueomaraart.co.uk/wp-content/uploads/2019/02/Sue-OMara-Art-Classes-Uckfield.jpg"
+        }
+      ]
     }
   ]
 }

@@ -17,9 +17,9 @@ export class AddCourseComponent implements OnInit, OnDestroy {
   destroy$ = new Subject<boolean>();
 
   constructor(private courseService: CourseService,
-    private fb: FormBuilder,
-    private router: Router,
-    private alertify: AlertifyService) { }
+              private fb: FormBuilder,
+              private router: Router,
+              private alertify: AlertifyService) { }
 
   ngOnInit() {
     this.buildForm();

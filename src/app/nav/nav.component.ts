@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { User } from '../_models/user';
 
 @Component({
   selector: 'app-nav',
@@ -15,6 +16,7 @@ export class NavComponent implements OnInit, OnDestroy {
   form: FormGroup;
   destroy$ = new Subject<boolean>();
   isUserLogged: boolean;
+  user: User;
 
   constructor(private authService: AuthService,
               private alertify: AlertifyService,
@@ -42,6 +44,7 @@ export class NavComponent implements OnInit, OnDestroy {
           return;
         }
         this.authService.setLoggedUser(user);
+        this.user = this.authService.getLoggedUser();
         this.alertify.success('Successfully logged in!');
         this.router.navigate(['/courses']);
       });

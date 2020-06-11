@@ -34,18 +34,17 @@ constructor(private route: ActivatedRoute,
 
   addToFavourites(courseId: number) {
     this.user = this.authService.getLoggedUser();
-    if (this.user.favourites) {
-      const courseInFav = this.user.favourites.find(c => c.id === courseId);
-      if (courseInFav) {
+    if (!this.user.favourites) {
+      this.user.favourites = [];
+    }
+
+    const courseInFav = this.user.favourites.find(c => c.id === courseId);
+    if (courseInFav) {
             this.alertify.error('This course is already added to favourites.');
             return;
           }
-    }
-    const existingFavCourse = this.user.favourites.find(c => c.id === courseId);
-    if (existingFavCourse) {
-      this.alertify.error('Course already added in favourites.');
-      return;
-    }
+
+
     this.user.favourites.push(this.course);
     this.userService.updateUser(this.user).subscribe(next => {
       this.alertify.success('Added to favourites.');
