@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
               private router: Router,
               private fb: RxFormBuilder
   ) { }
-  
+
 
   ngOnInit() {
     this.form = this.fb.group({

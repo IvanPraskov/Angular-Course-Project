@@ -16,7 +16,7 @@ export class NavComponent implements OnInit, OnDestroy {
   form: FormGroup;
   destroy$ = new Subject<boolean>();
   isUserLogged: boolean;
-  user: User;
+  loggedUser: User;
 
   constructor(private authService: AuthService,
               private alertify: AlertifyService,
@@ -44,9 +44,9 @@ export class NavComponent implements OnInit, OnDestroy {
           return;
         }
         this.authService.setLoggedUser(user);
-        this.user = this.authService.getLoggedUser();
+        this.loggedUser = this.authService.getLoggedUser();
+        this.form.reset();
         this.alertify.success('Successfully logged in!');
-        this.router.navigate(['/courses']);
       });
   }
   logout() {
