@@ -12,11 +12,7 @@ export class AuthService {
   readonly loggedUserStorageKey = 'loggerUser';
   private hasLoggedIn$ = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient) { }
-
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.url);
-  }
+  constructor(private httpClient: HttpClient) { }
 
   login(email: string, password: string): Observable<User> {
     return this.getUsers().pipe(
@@ -24,7 +20,7 @@ export class AuthService {
   }
 
   register(user: User): Observable<User> {
-    return this.http.post<User>(this.url, user);
+    return this.httpClient.post<User>(this.url, user);
   }
 
   logout() {
@@ -46,10 +42,11 @@ export class AuthService {
   }
 
   getHasLoggedIn(): boolean {
-    if (this.getLoggedUser()) {
-     return true;
-    }
-    return false;
+    return this.getLoggedUser() ? true : false;
+  }
+
+  getUsers(): Observable<User[]> {
+    return this.httpClient.get<User[]>(this.url);
   }
 
 }

@@ -5,7 +5,7 @@ import { DebugElement } from '@angular/core';
 
 import { AddCourseComponent } from './add-course.component';
 
-describe('AddCourseComponent', () => {
+describe('AddCourseComponentTest', () => {
   let component: AddCourseComponent;
   let fixture: ComponentFixture<AddCourseComponent>;
 

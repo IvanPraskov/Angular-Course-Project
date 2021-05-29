@@ -8,10 +8,11 @@ import { User } from '../_models/user';
 })
 export class UserService {
   readonly url = 'http://localhost:3000/users';
+
 constructor(private http: HttpClient) { }
+
 updateUser(user: User): Observable<User> {
   return this.http.put<User>(`${this.url}/${user.id}`, user);
 }
-
 
 }
