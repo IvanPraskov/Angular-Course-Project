@@ -7,27 +7,26 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CourseService {
-readonly url = 'http://localhost:3000/courses';
-constructor(private http: HttpClient) { }
+  readonly url = 'http://localhost:3000/courses';
+  constructor(private http: HttpClient) { }
 
-addCourse(course: Course): Observable<Course> {
-  return this.http.post<Course>(this.url, course);
-}
+  addCourse(course: Course): Observable<Course> {
+    return this.http.post<Course>(this.url, course);
+  }
 
-deleteCourse(id: number): Observable<Course> {
-  return this.http.delete<Course>(`${this.url}/${id}`);
-}
+  deleteCourse(id: number): Observable<Course> {
+    return this.http.delete<Course>(`${this.url}/${id}`);
+  }
 
-getCourses(): Observable<Course[]> {
-  return this.http.get<Course[]>(this.url);
-}
+  getCourses(): Observable<Course[]> {
+    return this.http.get<Course[]>(this.url);
+  }
 
-getCourse(id: number): Observable<Course> {
-  return this.http.get<Course>(`${this.url}/${id}`);
-}
+  getCourse(id: number): Observable<Course> {
+    return this.http.get<Course>(`${this.url}/${id}`);
+  }
 
-updateCourse(course: Course): Observable<Course> {
-  return this.http.put<Course>(`${this.url}/${course.id}`, course);
-}
-
+  updateCourse(course: Course): Observable<Course> {
+    return this.http.put<Course>(`${this.url}/${course.id}`, course);
+  }
 }

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../_models/user';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,10 @@ export class AuthService {
   readonly loggedUserStorageKey = 'loggerUser';
   private hasLoggedIn$ = new BehaviorSubject<boolean>(false);
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private userService: UserService) { }
 
   login(email: string, password: string): Observable<User> {
-    return this.getUsers().pipe(
+    return this.userService.getUsers().pipe(
       map((users: User[]) => users.find(user => user.email === email && user.password === password)));
   }
 
@@ -43,10 +44,6 @@ export class AuthService {
 
   getHasLoggedIn(): boolean {
     return this.getLoggedUser() ? true : false;
-  }
-
-  getUsers(): Observable<User[]> {
-    return this.httpClient.get<User[]>(this.url);
   }
 
 }
